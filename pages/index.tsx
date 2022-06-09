@@ -2,8 +2,11 @@ import type { NextPage } from "next";
 import { client } from "./_app";
 import { POKEMONS_QUERY } from "../graphql/queries/pokemons";
 
-export const getStaticProps = async () => {
-  const { data } = await client.query({ query: POKEMONS_QUERY });
+export const getStaticProps = async ({ locale }) => {
+  const { data } = await client.query({
+    query: POKEMONS_QUERY,
+    variables: { locale },
+  });
 
   return {
     props: {
