@@ -1,7 +1,8 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { CONTENTFUL_GRAPHQL_BASE_URI } from "../constants/constants";
+import { Global, ThemeProvider } from "@emotion/react";
+import { global } from "../styles/globals";
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -14,7 +15,10 @@ export const client = new ApolloClient({
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={{}}>
+        <Global styles={global} />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ApolloProvider>
   );
 };
