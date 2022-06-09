@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const POKEMONS_QUERY = gql`
-  query Pokemons {
-    pokemonCollection {
+  query Pokemons($locale: String!) {
+    pokemonCollection(locale: $locale) {
       items {
         image {
           title
