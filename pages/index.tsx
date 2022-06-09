@@ -1,23 +1,6 @@
 import type { NextPage } from "next";
 import { client } from "./_app";
 import { POKEMONS_QUERY } from "../graphql/queries/pokemons";
-import {
-  HomeStyled,
-  Pokemons,
-  Pokemon,
-  Name,
-  Generation,
-  Types,
-  Type,
-  Species,
-  Abilities,
-  Ability,
-  Index,
-  EvolvesFrom,
-  EvolvesInto,
-  Weight,
-  Height,
-} from "./index.styled";
 
 export const getStaticProps = async () => {
   const { data } = await client.query({ query: POKEMONS_QUERY });
@@ -30,7 +13,6 @@ export const getStaticProps = async () => {
 };
 
 const Home: NextPage = (props) => {
-
   return (
     <HomeStyled>
       <Pokemons>
@@ -40,14 +22,14 @@ const Home: NextPage = (props) => {
               <Name>{pokemon.name}</Name>
               <Generation></Generation>
               <Types>
-                {pokemon.types.map(type => (
+                {pokemon.types.map((type) => (
                   <Type key={type}>{type}</Type>
                 ))}
               </Types>
               <Species>{pokemon.species}</Species>
               <Abilities>
-                {pokemon.abilities.map(ability => {
-                  <Ability key={ability}>{ability}</Ability>
+                {pokemon.abilities.map((ability) => {
+                  <Ability key={ability}>{ability}</Ability>;
                 })}
               </Abilities>
               <Index>{pokemon.index}</Index>
@@ -62,5 +44,37 @@ const Home: NextPage = (props) => {
     </HomeStyled>
   );
 };
+
+import styled from "@emotion/styled";
+
+const HomeStyled = styled.div``;
+
+const Pokemons = styled.div``;
+
+const Pokemon = styled.div``;
+
+const Name = styled.span``;
+
+const Generation = styled.span``;
+
+const Types = styled.div``;
+
+const Type = styled.span``;
+
+const Species = styled.span``;
+
+const Abilities = styled.div``;
+
+const Ability = styled.span``;
+
+const Index = styled.span``;
+
+const EvolvesFrom = styled.span``;
+
+const EvolvesInto = styled.span``;
+
+const Weight = styled.span``;
+
+const Height = styled.span``;
 
 export default Home;
