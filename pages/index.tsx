@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import { client } from "./_app";
 import { POKEMONS_QUERY } from "../graphql/queries/pokemons";
+import Pokemon, { PokemonProps } from "../components/Pokemon/Pokemon";
+import styled from "@emotion/styled";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -8,76 +10,62 @@ export const getStaticProps = async ({ locale }) => {
     variables: { locale },
   });
 
+  const pokemons: PokemonProps[] = data.pokemonCollection.items;
+
   return {
     props: {
-      data,
+      pokemons,
     },
   };
 };
 
-const Home: NextPage = (props) => {
+const Home: NextPage<{ pokemons: PokemonProps[] }> = ({ pokemons }) => {
   return (
     <HomeStyled>
       <Pokemons>
-        {props["data"].pokemonCollection.items.map((pokemon) => {
-          return (
-            <Pokemon key={pokemon.index}>
-              <Name>{pokemon.name}</Name>
-              <Generation></Generation>
-              <Types>
-                {pokemon.types.map((type) => (
-                  <Type key={type}>{type}</Type>
-                ))}
-              </Types>
-              <Species>{pokemon.species}</Species>
-              <Abilities>
-                {pokemon.abilities.map((ability) => {
-                  <Ability key={ability}>{ability}</Ability>;
-                })}
-              </Abilities>
-              <Index>{pokemon.index}</Index>
-              <EvolvesFrom>{pokemon.evolvesFrom}</EvolvesFrom>
-              <EvolvesInto>{pokemon.evolvesInto}</EvolvesInto>
-              <Weight>{pokemon.weight}</Weight>
-              <Height>{pokemon.height}</Height>
-            </Pokemon>
-          );
-        })}
+        {pokemons.map(
+          ({
+            index,
+            image,
+            name,
+            generation,
+            types,
+            species,
+            abilities,
+            evolvesFrom,
+            evolvesInto,
+            weight,
+            height,
+          }) => {
+            return (
+              <Pokemon
+                key={index}
+                index={index}
+                image={image}
+                name={name}
+                generation={generation}
+                types={types}
+                species={species}
+                abilities={abilities}
+                evolvesFrom={evolvesFrom}
+                evolvesInto={evolvesInto}
+                weight={weight}
+                height={height}
+              />
+            );
+          }
+        )}
       </Pokemons>
     </HomeStyled>
   );
 };
 
-import styled from "@emotion/styled";
+export const HomeStyled = styled.div``;
 
-const HomeStyled = styled.div``;
-
-const Pokemons = styled.div``;
-
-const Pokemon = styled.div``;
-
-const Name = styled.span``;
-
-const Generation = styled.span``;
-
-const Types = styled.div``;
-
-const Type = styled.span``;
-
-const Species = styled.span``;
-
-const Abilities = styled.div``;
-
-const Ability = styled.span``;
-
-const Index = styled.span``;
-
-const EvolvesFrom = styled.span``;
-
-const EvolvesInto = styled.span``;
-
-const Weight = styled.span``;
-
-const Height = styled.span``;
+export const Pokemons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 export default Home;
