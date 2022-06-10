@@ -17,6 +17,7 @@ import {
   Types,
   Weight,
 } from "./Pokemon.styled";
+import { FormattedMessage } from "react-intl";
 
 export interface ImageProps {
   title: string;
@@ -63,35 +64,58 @@ const Pokemon: FC<PokemonProps> = ({
       <Info>
         <Name>{name}</Name>
         <Generation>
-          <Key>Generation {generation} </Key>
+          <Key>
+            <FormattedMessage id="pokemon.generation" /> {generation}{" "}
+          </Key>
         </Generation>
-        <Key>Type(s):</Key>
+        <Key>
+          <FormattedMessage id="pokemon.types" />:
+        </Key>
         <Types>
           {types.map((type) => (
             <Type key={type}>{type}</Type>
           ))}
         </Types>
         <Species>
-          <Key>Species:</Key> {species}
+          <Key>
+            <FormattedMessage id="pokemon.species" />:
+          </Key>{" "}
+          {species}
         </Species>
-        <Key>Abilities:</Key>
+        <Key>
+          <FormattedMessage id="pokemon.abilities" />:
+        </Key>
         <Abilities>
           {abilities.map((ability) => (
             <Ability key={ability}>{ability}</Ability>
           ))}
         </Abilities>
-        <Key>Index:</Key>
+        <Key>
+          <FormattedMessage id="pokemon.index" />:
+        </Key>
         <Index>{index}</Index>
-        <Key>Evolves:</Key>
+        <Key>
+          <FormattedMessage id="pokemon.evolves" />:
+        </Key>
         <EvolvesFrom>
-          <Key>from:</Key> {evolvesFrom}
+          <Key>
+            <FormattedMessage id="pokemon.from" />:
+          </Key>{" "}
+          {evolvesFrom}
         </EvolvesFrom>
         <EvolvesInto>
-          <Key>into:</Key> {evolvesInto}
+          <Key>
+            <FormattedMessage id="pokemon.into" />:
+          </Key>{" "}
+          {evolvesInto}
         </EvolvesInto>
-        <Key>Weight:</Key>
+        <Key>
+          <FormattedMessage id="pokemon.weight" />:
+        </Key>
         <Weight>{weight}</Weight>
-        <Key>Height:</Key>
+        <Key>
+          <FormattedMessage id="pokemon.height" />:
+        </Key>
         <Height>{height}</Height>
       </Info>
     </PokemonStyled>
