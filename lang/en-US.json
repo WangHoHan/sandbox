@@ -1,0 +1,12 @@
+{
+  "pokemon.generation": "Generation",
+  "pokemon.types": "Type(s)",
+  "pokemon.species": "Species",
+  "pokemon.abilities": "Abilities",
+  "pokemon.index": "Index",
+  "pokemon.evolves": "Evolves",
+  "pokemon.from": "from",
+  "pokemon.into": "into",
+  "pokemon.weight": "Weight",
+  "pokemon.height": "Height"
+}
