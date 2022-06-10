@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import { client } from "./_app";
-import { POKEMONS_QUERY } from "../graphql/queries/pokemons";
-import Pokemon, { PokemonProps } from "../components/Pokemon/Pokemon";
-import styled from "@emotion/styled";
+import type { NextPage } from 'next';
+import { client } from './_app';
+import { POKEMONS_QUERY } from '../graphql/queries/pokemons';
+import Pokemon, { PokemonProps } from '../components/Pokemon/Pokemon';
+import styled from '@emotion/styled';
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -24,19 +24,7 @@ const Home: NextPage<{ pokemons: PokemonProps[] }> = ({ pokemons }) => {
     <HomeStyled>
       <Pokemons>
         {pokemons.map(
-          ({
-            index,
-            image,
-            name,
-            generation,
-            types,
-            species,
-            abilities,
-            evolvesFrom,
-            evolvesInto,
-            weight,
-            height,
-          }) => {
+          ({ index, image, name, generation, types, species, abilities, evolvesFrom, evolvesInto, weight, height }) => {
             return (
               <Pokemon
                 key={index}
@@ -53,7 +41,7 @@ const Home: NextPage<{ pokemons: PokemonProps[] }> = ({ pokemons }) => {
                 height={height}
               />
             );
-          }
+          },
         )}
       </Pokemons>
     </HomeStyled>
