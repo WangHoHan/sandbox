@@ -17,7 +17,7 @@ import {
   Types,
   Weight,
 } from './Pokemon.styled';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 export interface ImageProps {
   title: string;
