@@ -1,5 +1,5 @@
-import { FC } from "react";
-import Image from "next/image";
+import { FC } from 'react';
+import Image from 'next/image';
 import {
   Abilities,
   Ability,
@@ -16,8 +16,8 @@ import {
   Type,
   Types,
   Weight,
-} from "./Pokemon.styled";
-import { FormattedMessage } from "react-intl";
+} from './Pokemon.styled';
+import { FormattedMessage } from 'react-intl';
 
 export interface ImageProps {
   title: string;
@@ -46,26 +46,21 @@ const Pokemon: FC<PokemonProps> = ({
   name,
   generation,
   types = [],
-  species = "",
+  species = '',
   abilities = [],
-  evolvesFrom = "",
-  evolvesInto = "",
-  weight = "?",
-  height = "?",
+  evolvesFrom = '',
+  evolvesInto = '',
+  weight = '?',
+  height = '?',
 }) => {
   return (
     <PokemonStyled key={index}>
-      <Image
-        alt={image.title}
-        src={image.url}
-        width={image.width}
-        height={image.height}
-      />
+      <Image alt={image.title} src={image.url} width={image.width} height={image.height} />
       <Info>
         <Name>{name}</Name>
         <Generation>
           <Key>
-            <FormattedMessage id="pokemon.generation" /> {generation}{" "}
+            <FormattedMessage id="pokemon.generation" /> {generation}{' '}
           </Key>
         </Generation>
         <Key>
@@ -79,7 +74,7 @@ const Pokemon: FC<PokemonProps> = ({
         <Species>
           <Key>
             <FormattedMessage id="pokemon.species" />:
-          </Key>{" "}
+          </Key>{' '}
           {species}
         </Species>
         <Key>
@@ -100,13 +95,13 @@ const Pokemon: FC<PokemonProps> = ({
         <EvolvesFrom>
           <Key>
             <FormattedMessage id="pokemon.from" />:
-          </Key>{" "}
+          </Key>{' '}
           {evolvesFrom}
         </EvolvesFrom>
         <EvolvesInto>
           <Key>
             <FormattedMessage id="pokemon.into" />:
-          </Key>{" "}
+          </Key>{' '}
           {evolvesInto}
         </EvolvesInto>
         <Key>
