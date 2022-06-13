@@ -17,7 +17,7 @@ import {
   Types,
   Weight,
 } from './Pokemon.styled';
-import { FormattedMessage } from 'react-intl';
+import { useTranslation } from 'react-i18next';
 
 export interface ImageProps {
   title: string;
@@ -53,64 +53,43 @@ const Pokemon: FC<PokemonProps> = ({
   weight = '?',
   height = '?',
 }) => {
+  const { t } = useTranslation();
+
   return (
     <PokemonStyled key={index}>
       <Image alt={image.title} src={image.url} width={image.width} height={image.height} />
       <Info>
         <Name>{name}</Name>
         <Generation>
-          <Key>
-            <FormattedMessage id="pokemon.generation" /> {generation}{' '}
-          </Key>
+          <Key>{t('pokemon.generation')}</Key> {generation}
         </Generation>
-        <Key>
-          <FormattedMessage id="pokemon.types" />:
-        </Key>
+        <Key>{t('pokemon.types')}:</Key>
         <Types>
           {types.map((type) => (
             <Type key={type}>{type}</Type>
           ))}
         </Types>
         <Species>
-          <Key>
-            <FormattedMessage id="pokemon.species" />:
-          </Key>{' '}
-          {species}
+          <Key>{t('pokemon.species')}:</Key> {species}
         </Species>
-        <Key>
-          <FormattedMessage id="pokemon.abilities" />:
-        </Key>
+        <Key>{t('pokemon.abilities')}:</Key>
         <Abilities>
           {abilities.map((ability) => (
             <Ability key={ability}>{ability}</Ability>
           ))}
         </Abilities>
-        <Key>
-          <FormattedMessage id="pokemon.index" />:
-        </Key>
+        <Key>{t('pokemon.index')}:</Key>
         <Index>{index}</Index>
-        <Key>
-          <FormattedMessage id="pokemon.evolves" />:
-        </Key>
+        <Key>{t('pokemon.evolves')}:</Key>
         <EvolvesFrom>
-          <Key>
-            <FormattedMessage id="pokemon.from" />:
-          </Key>{' '}
-          {evolvesFrom}
+          <Key>{t('pokemon.from')}:</Key> {evolvesFrom}
         </EvolvesFrom>
         <EvolvesInto>
-          <Key>
-            <FormattedMessage id="pokemon.into" />:
-          </Key>{' '}
-          {evolvesInto}
+          <Key>{t('pokemon.index')}:</Key> {evolvesInto}
         </EvolvesInto>
-        <Key>
-          <FormattedMessage id="pokemon.weight" />:
-        </Key>
+        <Key>{t('pokemon.weight')}:</Key>
         <Weight>{weight}</Weight>
-        <Key>
-          <FormattedMessage id="pokemon.height" />:
-        </Key>
+        <Key>{t('pokemon.height')}:</Key>
         <Height>{height}</Height>
       </Info>
     </PokemonStyled>
