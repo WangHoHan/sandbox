@@ -1,0 +1,14 @@
+{
+  "pokemon": {
+    "generation": "Generacja",
+    "types": "Typ(y)",
+    "species": "Gatunek",
+    "abilities": "Umiejętności",
+    "index": "Indeks",
+    "evolves": "Ewoluuje",
+    "from": "z",
+    "into": "do",
+    "weight": "Waga",
+    "height": "Wzorst"
+  }
+}

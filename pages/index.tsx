@@ -1,10 +1,13 @@
 import type { NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { client } from './_app';
 import { POKEMONS_QUERY } from '../graphql/queries/pokemons';
 import Pokemon, { PokemonProps } from '../components/Pokemon/Pokemon';
 import styled from '@emotion/styled';
 
 export const getStaticProps = async ({ locale }) => {
+  const translations = await serverSideTranslations(locale);
+
   const { data } = await client.query({
     query: POKEMONS_QUERY,
     variables: { locale },
@@ -14,6 +17,7 @@ export const getStaticProps = async ({ locale }) => {
 
   return {
     props: {
+      ...translations,
       pokemons,
     },
   };
