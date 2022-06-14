@@ -57,7 +57,7 @@ const Pokemon: FC<PokemonProps> = ({
 
   return (
     <PokemonStyled key={index}>
-      <Image alt={image.title} src={image.url} width={image.width} height={image.height} />
+      <Image alt={image.title} src={image.url} width={320} height={320} />
       <Info>
         <Name>{name}</Name>
         <Generation>
@@ -85,7 +85,7 @@ const Pokemon: FC<PokemonProps> = ({
           <Key>{t('pokemon.from')}:</Key> {evolvesFrom}
         </EvolvesFrom>
         <EvolvesInto>
-          <Key>{t('pokemon.index')}:</Key> {evolvesInto}
+          <Key>{t('pokemon.into')}:</Key> {evolvesInto}
         </EvolvesInto>
         <Key>{t('pokemon.weight')}:</Key>
         <Weight>{weight}</Weight>
