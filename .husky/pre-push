@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx enforce-branch-name '^((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)\/([a-z]+-?)*[a-z]+)$' --ignore 'main'
+npx enforce-branch-name '^((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)\/([a-z0-9]+-?)*[a-z0-9]+)$' --ignore 'main'
