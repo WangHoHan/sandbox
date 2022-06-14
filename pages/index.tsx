@@ -6,7 +6,7 @@ import Pokemon, { PokemonProps } from '../components/Pokemon/Pokemon';
 import styled from '@emotion/styled';
 
 export const getStaticProps = async ({ locale }) => {
-  const translations = await serverSideTranslations(locale);
+  const translations = await serverSideTranslations(locale, ['common', 'hello']);
 
   const { data } = await client.query({
     query: POKEMONS_QUERY,

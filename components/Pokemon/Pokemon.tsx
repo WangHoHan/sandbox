@@ -18,7 +18,6 @@ import {
   Weight,
 } from './Pokemon.styled';
 import { useTranslation } from 'next-i18next';
-
 export interface ImageProps {
   title: string;
   url: string;
@@ -53,43 +52,44 @@ const Pokemon: FC<PokemonProps> = ({
   weight = '?',
   height = '?',
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['common', 'hello']);
 
   return (
     <PokemonStyled key={index}>
+      <>{t('hello:hello')}</>
       <Image alt={image.title} src={image.url} width={320} height={320} />
       <Info>
         <Name>{name}</Name>
         <Generation>
-          <Key>{t('pokemon.generation')}</Key> {generation}
+          <Key>{t('common:pokemon.generation')}</Key> {generation}
         </Generation>
-        <Key>{t('pokemon.types')}:</Key>
+        <Key>{t('common:pokemon.types')}:</Key>
         <Types>
           {types.map((type) => (
             <Type key={type}>{type}</Type>
           ))}
         </Types>
         <Species>
-          <Key>{t('pokemon.species')}:</Key> {species}
+          <Key>{t('common:pokemon.species')}:</Key> {species}
         </Species>
-        <Key>{t('pokemon.abilities')}:</Key>
+        <Key>{t('common:pokemon.abilities')}:</Key>
         <Abilities>
           {abilities.map((ability) => (
             <Ability key={ability}>{ability}</Ability>
           ))}
         </Abilities>
-        <Key>{t('pokemon.index')}:</Key>
+        <Key>{t('common:pokemon.index')}:</Key>
         <Index>{index}</Index>
-        <Key>{t('pokemon.evolves')}:</Key>
+        <Key>{t('common:pokemon.evolves')}:</Key>
         <EvolvesFrom>
-          <Key>{t('pokemon.from')}:</Key> {evolvesFrom}
+          <Key>{t('common:pokemon.from')}:</Key> {evolvesFrom}
         </EvolvesFrom>
         <EvolvesInto>
-          <Key>{t('pokemon.into')}:</Key> {evolvesInto}
+          <Key>{t('common:pokemon.into')}:</Key> {evolvesInto}
         </EvolvesInto>
-        <Key>{t('pokemon.weight')}:</Key>
+        <Key>{t('common:pokemon.weight')}:</Key>
         <Weight>{weight}</Weight>
-        <Key>{t('pokemon.height')}:</Key>
+        <Key>{t('common:pokemon.height')}:</Key>
         <Height>{height}</Height>
       </Info>
     </PokemonStyled>
