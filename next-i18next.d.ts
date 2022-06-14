@@ -1,4 +1,4 @@
-import 'react-i18next';
+import 'next-i18next';
 import ns1 from './public/locales/en-US/common.json';
 import ns2 from './public/locales/pl/common.json';
 
