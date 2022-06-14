@@ -18,6 +18,7 @@ import {
   Weight,
 } from './Pokemon.styled';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 export interface ImageProps {
   title: string;
   url: string;
@@ -56,7 +57,7 @@ const Pokemon: FC<PokemonProps> = ({
 
   return (
     <PokemonStyled key={index}>
-      <>{t('hello:hello')}</>
+      <Link href="/hello/1">{t('hello:hello')}</Link>
       <Image alt={image.title} src={image.url} width={320} height={320} />
       <Info>
         <Name>{name}</Name>
